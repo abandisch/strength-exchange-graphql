@@ -41,18 +41,18 @@ const store = { programs: programs };
 const typeDefs = `
 	type Program {
 		id: ID!
-        name: String!
-        days: [Day]
-		summary: String 
-    }
-    type Day {
-        id: ID!
-        dayType: String!
-        dayNumber: Int!
-        exercises: [Exercise]
-    }
+    name: String!
+    days: [Day]
+    summary: String 
+  }
+  type Day {
+    id: ID!
+    dayType: String!
+    dayNumber: Int!
+    exercises: [Exercise]
+  }
 	type Exercise {
-        id: ID!
+    id: ID!
 		reps: Int!
 		sets: Int!
 		type: String!
