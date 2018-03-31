@@ -13,6 +13,7 @@ casual.seed(234);
 const exerciseTypes = ["squal", "deadlift", "bench press"];
 const exercises = () =>
   _.times(casual.integer(1, 10), () => ({
+    id: casual.uuid,
     type: casual.random_element(exerciseTypes),
     reps: casual.integer(0, 100),
     sets: casual.integer(0, 5),
