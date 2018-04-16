@@ -62,6 +62,7 @@ const typeDefs = `
   type Query {
     allPrograms: [Program!]
 		findProgram(id: String!): Program
+    findByDay(id: String!, dayNumber: Int!): Day
   }
 `;
 
@@ -73,6 +74,11 @@ const resolvers = {
     },
     findProgram: (root, args, context) => {
       return store.programs.find(p => p.id === args.id);
+    },
+    findByDay: (root, args, context) => {
+      return store.programs
+      .find(p => p.id === args.id).days
+      .find(d => d.dayNumber === args.dayNumber)
     }
   }
 };
