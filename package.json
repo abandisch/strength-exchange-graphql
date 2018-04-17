@@ -4,8 +4,7 @@
   "description": "",
   "main": "./src/server.js",
   "scripts": {
-    "start": "node ./src/server.js --exec babel-node -e js",
-    "devstart": "nodemon ./src/server.js --exec babel-node -e js",
+    "start": "nodemon ./src/server.js --exec babel-node -e js",
     "test": "echo \"No test specified\" && exit 0",
     "deploy": "now --token $NOW_TOKEN rm strength_exchange -y && now -e NODE_ENV=production --public --token $NOW_TOKEN && now --token $NOW_TOKEN alias"
   },
