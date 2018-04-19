@@ -1,7 +1,7 @@
 import express from 'express';
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import bodyParser from 'body-parser';
-
+import cors from 'cors';
 import * as Schema from './schema';
 
 const PORT = 3000;
@@ -31,7 +31,7 @@ const contextFunction =
     );
   };
 
-server.use('/graphql', bodyParser.json(), graphqlExpress(async (request) => {
+server.use('/graphql', cors(), bodyParser.json(), graphqlExpress(async (request) => {
   if (!schema) {
     schema = schemaFunction(process.env)
   }
