@@ -10,17 +10,17 @@ import _ from "lodash";
 
 casual.seed(234);
 
-const exerciseTypes = ["squal", "deadlift", "bench press"];
+const exerciseTypes = ["Overhead press", "Lunge", "Biceps curl", "Squat", "Deadlift", "Bench Press", "Leg Press", "Leg Curls", "Wide-Grip Lat Pulldown", "Triceps Pushdown"];
 const exercises = () =>
-  _.times(casual.integer(1, 10), () => ({
+  _.times(casual.integer(3, 4), () => ({
     id: casual.uuid,
     type: casual.random_element(exerciseTypes),
-    reps: casual.integer(0, 100),
-    sets: casual.integer(0, 5),
-    comments: casual.words(casual.integer(0, 30))
+    reps: casual.integer(3, 10),
+    sets: casual.integer(2, 4),
+    comments: casual.words(casual.integer(10, 30))
   }));
 
-const dayTypes = ["rest", "cardio", "weight"];
+const dayTypes = ["rest", "weight"];
 const days = () =>
   _.times(30, i => ({
     id: casual.uuid,
