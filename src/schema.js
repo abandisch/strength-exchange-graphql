@@ -11,14 +11,26 @@ import _ from "lodash";
 casual.seed(234);
 
 const exerciseTypes = ["Overhead press", "Lunge", "Biceps curl", "Squat", "Deadlift", "Bench Press", "Leg Press", "Leg Curls", "Wide-Grip Lat Pulldown", "Triceps Pushdown"];
+const exerciseComments = [
+  "Hand position is important for a number of reasons, the main one being it determines which muscle groups take the majority of the load on each rep.",
+  "The elbow position will also determine whether or not you’re risking injury by putting too much stress through the shoulder joint which also takes away from the pecs on each rep.",
+  "Anchor your feet into the ground, lift up through the bottom of the rip cage and force your shoulder blades down into the bench.",
+  "On every rep you should be taking a deep inhale before you begin the eccentric phase (the way down), holding onto it until the bar is on it’s way up where you will then exhale and repeat",
+  "A weak bench press is often due to a lack of tricep strength and/or size, not so much a weak chest. Common sense would suggest increasing the strength of your triceps to aid the chest throughout a bench press.",
+  "Make sure that you do not lock your knees. Your torso and the legs should make a perfect 90-degree angle. This will be your starting position.",
+  "As you inhale, slowly lower the platform until your upper and lower legs make a 90-degree angle.",
+  "Keep your upper body straight, with your shoulders back and relaxed and chin up (pick a point to stare at in front of you so you don't keep looking down). Always engage your core."
+];
 const exercises = () =>
   _.times(casual.integer(3, 4), () => ({
     id: casual.uuid,
     type: casual.random_element(exerciseTypes),
     reps: casual.integer(3, 10),
     sets: casual.integer(2, 4),
-    comments: casual.words(casual.integer(10, 30))
+    comments: casual.random_element(exerciseComments)
   }));
+  // comments: casual.words(casual.integer(10, 30))
+  // comments: casual.random_element(exerciseComments)
 
 const dayTypes = ["rest", "weight"];
 const days = () =>
@@ -29,11 +41,26 @@ const days = () =>
     exercises: exercises()
   }));
 
-const programs = _.times(10, () => ({
+const mockSummaries = [
+  "This fitness course that will get you ready for summer with a full body workout",
+  "This fitness regime that will get you ready for summer with a full body workout",
+  "This workout program that will get you ready for summer with a full body workout",
+  "This intense workout that will get you ready for summer with a full body workout",
+  "This mini-workout dedicated to abs and upperbody"
+];
+const mockTitles = [
+  "Intensive Full Body",
+  "Ripped in weeks",
+  "Summer-Ready Workout",
+  "Go hard or go home!",
+  "Casual Workout",
+  "Daily 20 minute"
+];
+const programs = _.times(5, () => ({
   id: casual.uuid,
-  name: casual.title,
+  name: casual.random_element(mockTitles),
   days: days(),
-  summary: casual.sentences(casual.random)
+  summary: casual.random_element(mockSummaries),
 }));
 const store = { programs: programs };
 
